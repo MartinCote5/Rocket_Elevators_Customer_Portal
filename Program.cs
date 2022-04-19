@@ -2,18 +2,27 @@ using Microsoft.EntityFrameworkCore;
 using MvcMovie.Data;
 using MvcMovie.Models;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity;
+using MvcMovie.Areas.Identity.Data;
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("MvcMovieIdentityDbContextConnection");;
+
+builder.Services.AddDbContext<MvcMovieIdentityDbContext>(options =>
+    options.UseSqlite(connectionString));;
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<MvcMovieIdentityDbContext>();;
 
 if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddDbContext<MvcMovieContext>(options =>
         options.UseSqlite(builder.Configuration.GetConnectionString("MvcMovieContext")));
 }
-else
-{
-    builder.Services.AddDbContext<MvcMovieContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("ProductionMvcMovieContext")));
-}
+// else
+// {
+//     builder.Services.AddDbContext<MvcMovieContext>(options =>
+//         options.UseSqlServer(builder.Configuration.GetConnectionString("ProductionMvcMovieContext")));
+// }
 // im pretty sure this is extra
 // builder.Services.AddDbContext<MvcMovieContext>(options =>
 //     options.UseSqlite(builder.Configuration.GetConnectionString("MvcMovieContext") ?? throw new InvalidOperationException("Connection string 'MvcMovieContext' not found.")));
@@ -42,11 +51,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+app.UseAuthentication();;
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapRazorPages();    
+    
 
 app.Run();
