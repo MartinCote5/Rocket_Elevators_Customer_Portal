@@ -290,3 +290,13 @@
 /home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/Microsoft.Extensions.Identity.Core.dll
 /home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/Microsoft.Extensions.Identity.Stores.dll
 /home/martincote/ASPNET template/MvcMovie/obj/Debug/net6.0/MvcMovie.MvcApplicationPartsAssemblyInfo.cs
+/home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/MySqlConnector.dll
+/home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/NetTopologySuite.dll
+/home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.dll
+/home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.Json.Microsoft.dll
+/home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.Json.Newtonsoft.dll
+/home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/Pomelo.EntityFrameworkCore.MySql.NetTopologySuite.dll
+/home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/System.Text.Json.dll
+/home/martincote/ASPNET template/MvcMovie/obj/Debug/net6.0/EFCoreMySqlNetTopologySuite.cs
+/home/martincote/ASPNET template/MvcMovie/obj/Debug/net6.0/EFCoreMySqlJsonNewtonsoft.cs
+/home/martincote/ASPNET template/MvcMovie/obj/Debug/net6.0/EFCoreMySqlJsonMicrosoft.cs

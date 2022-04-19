@@ -14,7 +14,11 @@
           "Microsoft.EntityFrameworkCore.Sqlite": "6.0.4",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.4",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.4",
-          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.3"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.3",
+          "Pomelo.EntityFrameworkCore.MySql": "6.0.1",
+          "Pomelo.EntityFrameworkCore.MySql.Json.Microsoft": "6.0.1",
+          "Pomelo.EntityFrameworkCore.MySql.Json.Newtonsoft": "6.0.1",
+          "Pomelo.EntityFrameworkCore.MySql.NetTopologySuite": "6.0.1"
         },
         "runtime": {
           "MvcMovie.dll": {}
@@ -123,7 +127,7 @@
           "System.Reflection.Metadata": "5.0.0",
           "System.Security.Principal.Windows": "4.7.0",
           "System.Text.Encoding.CodePages": "4.7.0",
-          "System.Text.Json": "6.0.0",
+          "System.Text.Json": "6.0.1",
           "System.Threading.Tasks.Dataflow": "4.9.0"
         }
       },
@@ -772,7 +776,7 @@
           "Microsoft.Build.Framework": "17.0.0",
           "Microsoft.CodeAnalysis.Common": "4.0.0",
           "Microsoft.CodeAnalysis.Workspaces.Common": "4.0.0",
-          "System.Text.Json": "6.0.0"
+          "System.Text.Json": "6.0.1"
         },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.CodeAnalysis.Workspaces.MSBuild.dll": {
@@ -1048,7 +1052,7 @@
           "System.Memory": "4.5.4",
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
           "System.Text.Encodings.Web": "6.0.0",
-          "System.Text.Json": "6.0.0"
+          "System.Text.Json": "6.0.1"
         },
         "runtime": {
           "lib/netstandard2.0/Microsoft.Extensions.DependencyModel.dll": {
@@ -1349,6 +1353,14 @@
           }
         }
       },
+      "MySqlConnector/2.1.2": {
+        "runtime": {
+          "lib/net6.0/MySqlConnector.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.1.2.0"
+          }
+        }
+      },
       "NETStandard.Library/1.6.1": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
@@ -1395,6 +1407,17 @@
           "System.Threading.Timer": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XDocument": "4.3.0"
+        }
+      },
+      "NetTopologySuite/2.3.0": {
+        "dependencies": {
+          "System.Memory": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NetTopologySuite.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
         }
       },
       "Newtonsoft.Json/13.0.1": {
@@ -1502,6 +1525,63 @@
           "lib/netstandard2.0/NuGet.Versioning.dll": {
             "assemblyVersion": "5.11.0.10",
             "fileVersion": "5.11.0.10"
+          }
+        }
+      },
+      "Pomelo.EntityFrameworkCore.MySql/6.0.1": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.4",
+          "Microsoft.Extensions.DependencyInjection": "6.0.0",
+          "MySqlConnector": "2.1.2"
+        },
+        "runtime": {
+          "lib/net6.0/Pomelo.EntityFrameworkCore.MySql.dll": {
+            "assemblyVersion": "6.0.1.0",
+            "fileVersion": "6.0.1.0"
+          }
+        }
+      },
+      "Pomelo.EntityFrameworkCore.MySql.Json.Microsoft/6.0.1": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.4",
+          "MySqlConnector": "2.1.2",
+          "Pomelo.EntityFrameworkCore.MySql": "6.0.1",
+          "System.Text.Json": "6.0.1"
+        },
+        "runtime": {
+          "lib/net6.0/Pomelo.EntityFrameworkCore.MySql.Json.Microsoft.dll": {
+            "assemblyVersion": "6.0.1.0",
+            "fileVersion": "6.0.1.0"
+          }
+        }
+      },
+      "Pomelo.EntityFrameworkCore.MySql.Json.Newtonsoft/6.0.1": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.4",
+          "Microsoft.Extensions.DependencyInjection": "6.0.0",
+          "MySqlConnector": "2.1.2",
+          "Newtonsoft.Json": "13.0.1",
+          "Pomelo.EntityFrameworkCore.MySql": "6.0.1"
+        },
+        "runtime": {
+          "lib/net6.0/Pomelo.EntityFrameworkCore.MySql.Json.Newtonsoft.dll": {
+            "assemblyVersion": "6.0.1.0",
+            "fileVersion": "6.0.1.0"
+          }
+        }
+      },
+      "Pomelo.EntityFrameworkCore.MySql.NetTopologySuite/6.0.1": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Relational": "6.0.4",
+          "Microsoft.Extensions.DependencyInjection": "6.0.0",
+          "MySqlConnector": "2.1.2",
+          "NetTopologySuite": "2.3.0",
+          "Pomelo.EntityFrameworkCore.MySql": "6.0.1"
+        },
+        "runtime": {
+          "lib/net6.0/Pomelo.EntityFrameworkCore.MySql.NetTopologySuite.dll": {
+            "assemblyVersion": "6.0.1.0",
+            "fileVersion": "6.0.1.0"
           }
         }
       },
@@ -2368,10 +2448,16 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         }
       },
-      "System.Text.Json/6.0.0": {
+      "System.Text.Json/6.0.1": {
         "dependencies": {
           "System.Runtime.CompilerServices.Unsafe": "6.0.0",
           "System.Text.Encodings.Web": "6.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/System.Text.Json.dll": {
+            "assemblyVersion": "6.0.0.0",
+            "fileVersion": "6.0.121.56705"
+          }
         }
       },
       "System.Text.RegularExpressions/4.3.0": {
@@ -3002,12 +3088,26 @@
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
     },
+    "MySqlConnector/2.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JVokQTUNN3WHAu9Vw8ieeq1dXTFokJiig5P0VJ4f439UxRrsPo6SaVWC8Zdm6mkPeQFhZ0/9afdWa02EY/1j/w==",
+      "path": "mysqlconnector/2.1.2",
+      "hashPath": "mysqlconnector.2.1.2.nupkg.sha512"
+    },
     "NETStandard.Library/1.6.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-WcSp3+vP+yHNgS8EV5J7pZ9IRpeDuARBPN28by8zqff1wJQXm26PVU8L3/fYLBJVU7BtDyqNVWq2KlCVvSSR4A==",
       "path": "netstandard.library/1.6.1",
       "hashPath": "netstandard.library.1.6.1.nupkg.sha512"
+    },
+    "NetTopologySuite/2.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Y+YOvA5um+75Wm9NKE+EhUNCvLYWiPhPW5Q5eBNi6kVNbxsX60/nvIJtve5iRcbrAl38W9h2w2yBjU81cjDO5g==",
+      "path": "nettopologysuite/2.3.0",
+      "hashPath": "nettopologysuite.2.3.0.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",
@@ -3078,6 +3178,34 @@
       "sha512": "sha512-mCv/GzvMk5iatWoZY41PoIShEbwVxq9CDCc1fV/uqPFKZ4DD/1JuKZ5AL/FJJRsTanvMR3EOXKYCLdQ7PFYn8Q==",
       "path": "nuget.versioning/5.11.0",
       "hashPath": "nuget.versioning.5.11.0.nupkg.sha512"
+    },
+    "Pomelo.EntityFrameworkCore.MySql/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-sFIo5e9RmQoCTEvH6EeSV8ptmX3dw/6XgyD8R93X/i7A9+XCeG9KTjSNjrszVjVOtCu/eyvYqqcv2uZ/BHhlYA==",
+      "path": "pomelo.entityframeworkcore.mysql/6.0.1",
+      "hashPath": "pomelo.entityframeworkcore.mysql.6.0.1.nupkg.sha512"
+    },
+    "Pomelo.EntityFrameworkCore.MySql.Json.Microsoft/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-YGoKz8MTPDIJ/LHK9SxTEuM6c1VH47tiuerBew6wlO2+X+/9h6A/Qt9Ck17ujQYiP/BKI+MunWjL/3dWtacOIA==",
+      "path": "pomelo.entityframeworkcore.mysql.json.microsoft/6.0.1",
+      "hashPath": "pomelo.entityframeworkcore.mysql.json.microsoft.6.0.1.nupkg.sha512"
+    },
+    "Pomelo.EntityFrameworkCore.MySql.Json.Newtonsoft/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QqVcfHEmHtpjmYqaGkVKWbifn73jDYgAdk946s4XLCxftFi+jRlZbYPPGLdTAoDOk4CS9GR8CYKB5G+oj8auaA==",
+      "path": "pomelo.entityframeworkcore.mysql.json.newtonsoft/6.0.1",
+      "hashPath": "pomelo.entityframeworkcore.mysql.json.newtonsoft.6.0.1.nupkg.sha512"
+    },
+    "Pomelo.EntityFrameworkCore.MySql.NetTopologySuite/6.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6a8yykBQU7RJgJDT/21WkYoQdajwGxpPiMH73llzFD2+SSdJAPEKNmBLjTs3nBmoLLncGgUg0imkV9/C2k8UKg==",
+      "path": "pomelo.entityframeworkcore.mysql.nettopologysuite/6.0.1",
+      "hashPath": "pomelo.entityframeworkcore.mysql.nettopologysuite.6.0.1.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
@@ -3709,12 +3837,12 @@
       "path": "system.text.encodings.web/6.0.0",
       "hashPath": "system.text.encodings.web.6.0.0.nupkg.sha512"
     },
-    "System.Text.Json/6.0.0": {
+    "System.Text.Json/6.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zaJsHfESQvJ11vbXnNlkrR46IaMULk/gHxYsJphzSF+07kTjPHv+Oc14w6QEOfo3Q4hqLJgStUaYB9DBl0TmWg==",
-      "path": "system.text.json/6.0.0",
-      "hashPath": "system.text.json.6.0.0.nupkg.sha512"
+      "sha512": "sha512-X3cTdM+jna1YyfTUzToW7aVgINFv7R1W4+1+3hua/YCyLjApPoR8fd+2Cep9DbfYjbv+rBx4K6dlmAWEJr9AHg==",
+      "path": "system.text.json/6.0.1",
+      "hashPath": "system.text.json.6.0.1.nupkg.sha512"
     },
     "System.Text.RegularExpressions/4.3.0": {
       "type": "package",
