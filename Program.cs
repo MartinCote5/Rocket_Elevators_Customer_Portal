@@ -10,13 +10,18 @@ var builder = WebApplication.CreateBuilder(args);
         // var connectionString = "server=localhost;user=root;password=1234;database=ef";
 
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
-var connectionString = builder.Configuration.GetConnectionString("MvcMovieIdentityDbContextConnection");;
+
+string connectionString = "server=localhost;database=rocket-elevators;user=martincote;password=dragonballz";
+
+// var connectionString = builder.Configuration.GetConnectionString("MvcMovieIdentityDbContextConnection");;
 
 builder.Services.AddDbContext<MvcMovieIdentityDbContext>(options =>
     options.UseMySql(connectionString, serverVersion));;
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<MvcMovieIdentityDbContext>();;
+
+
 
 // if (builder.Environment.IsDevelopment())
 // {
@@ -64,7 +69,8 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+    // pattern: "{controller=Home}/{action=Index}/{id?}").RequireAuthorization();
 app.MapRazorPages();    
     
-
+// app.UsePathBase("/Identity/Account/Login");
 app.Run();
