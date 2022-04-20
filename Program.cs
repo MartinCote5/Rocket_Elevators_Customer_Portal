@@ -21,12 +21,12 @@ builder.Services.AddDbContext<MvcMovieIdentityDbContext>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<MvcMovieIdentityDbContext>();;
 
-builder.Services.AddDbContext<ElevatorsContext>(options =>
-    options.UseMySql(connectionString, serverVersion)
-        .LogTo(Console.WriteLine, LogLevel.Information)
-        .EnableSensitiveDataLogging()
-        .EnableDetailedErrors()
-);
+// builder.Services.AddDbContext<ElevatorsContext>(options =>
+//     options.UseMySql(connectionString, serverVersion)
+//         .LogTo(Console.WriteLine, LogLevel.Information)
+//         .EnableSensitiveDataLogging()
+//         .EnableDetailedErrors()
+// );
 
 // if (builder.Environment.IsDevelopment())
 // {

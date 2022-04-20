@@ -1,4 +1,6 @@
-﻿@{
+﻿@model MvcMovie.Models.Elevator[]
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,3 +8,34 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].column_id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var elevator in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => elevator.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => elevator.column_id)
+            </td>
+            @* <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>

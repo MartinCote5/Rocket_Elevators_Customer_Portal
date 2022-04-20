@@ -15,7 +15,47 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        Elevator[] elevators = new Elevator[]{};
+        using (var client = new HttpClient())
+            {   
+                // client.BaseAddress = new Uri("https://localhost:7276/databaseName???/api/Elevators/4");
+                // client.BaseAddress = new Uri("https://localhost:7276/api/Elevators/4");
+                client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/");
+                //HTTP GET
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                var responseTask = client.GetAsync("Elevators/inactive");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                
+                if (result.IsSuccessStatusCode)
+                {
+
+                    var readTask = result.Content.ReadAsAsync<Elevator[]>();
+                    readTask.Wait();
+
+                    elevators = readTask.Result;
+
+                    foreach (var elevator in elevators)
+                    {
+                        Console.WriteLine(elevator.Id);
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                    }
+                }
+            }  
+        return View(elevators);
     }
 
     public IActionResult Privacy()

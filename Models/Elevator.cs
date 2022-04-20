@@ -1,4 +1,4 @@
-namespace RocketElevatorREST.Models
+namespace MvcMovie.Models
 {
     public class Elevator
     {

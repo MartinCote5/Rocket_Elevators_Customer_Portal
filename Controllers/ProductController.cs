@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 
 
-namespace HttpClientDemo
+namespace MvcMovie.Models
 {   
     
     
@@ -16,10 +16,18 @@ namespace HttpClientDemo
         static void Main(string[] args)
         {
             using (var client = new HttpClient())
-            {
-                // client.BaseAddress = new Uri("http://localhost:7276/api/Elevators/1");
-                client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/Elevators/1");
+            {   
+                // client.BaseAddress = new Uri("https://localhost:7276/databaseName???/api/Elevators/4");
+                // client.BaseAddress = new Uri("https://localhost:7276/api/Elevators/4");
+                client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/Elevators/4");
                 //HTTP GET
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
                 var responseTask = client.GetAsync("elevators");
                 responseTask.Wait();
 
@@ -27,14 +35,21 @@ namespace HttpClientDemo
                 if (result.IsSuccessStatusCode)
                 {
 
-                    var readTask = result.Content.ReadAsAsync<elevators[]>();
+                    var readTask = result.Content.ReadAsAsync<Elevator[]>();
                     readTask.Wait();
 
                     var elevators = readTask.Result;
 
                     foreach (var elevator in elevators)
                     {
-                        Console.WriteLine(elevator.Name);
+                        Console.WriteLine(elevator.Id);
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
                     }
                 }
             }

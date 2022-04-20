@@ -300,3 +300,5 @@
 /home/martincote/ASPNET template/MvcMovie/obj/Debug/net6.0/EFCoreMySqlNetTopologySuite.cs
 /home/martincote/ASPNET template/MvcMovie/obj/Debug/net6.0/EFCoreMySqlJsonNewtonsoft.cs
 /home/martincote/ASPNET template/MvcMovie/obj/Debug/net6.0/EFCoreMySqlJsonMicrosoft.cs
+/home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/System.Net.Http.Formatting.dll
+/home/martincote/ASPNET template/MvcMovie/bin/Debug/net6.0/Newtonsoft.Json.Bson.dll
