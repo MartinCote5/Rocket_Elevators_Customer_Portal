@@ -4,8 +4,16 @@ using MvcMovie.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using MvcMovie.Areas.Identity.Data;
+using MyApplication.Data;
 
 var builder = WebApplication.CreateBuilder(args);
+var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection");;
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(connectionString));;
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();;
 // Replace with your connection string.
         // var connectionString = "server=localhost;user=root;password=1234;database=ef";
 
@@ -63,6 +71,50 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+{    
+    {
+        Lead[] leads = new Lead[]{};
+        using (var client = new HttpClient())
+            {   
+                // client.BaseAddress = new Uri("https://localhost:7276/databaseName???/api/Elevators/4");
+                // client.BaseAddress = new Uri("https://localhost:7276/api/Elevators/4");
+                client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/");
+                //HTTP GET
+                Console.WriteLine("---------tttt---------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("----------tttt--------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("------------------------");
+                Console.WriteLine("-----------ttttt-------------");
+                var responseTask = client.GetAsync("Leads/noncustomer");
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+                
+                if (result.IsSuccessStatusCode)
+                {
+
+                    var readTask = result.Content.ReadAsAsync<Lead[]>();
+                    readTask.Wait();
+
+                    leads = readTask.Result;
+
+                    foreach (var lead in leads)
+                    {
+                        Console.WriteLine(lead.e_mail);
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                        Console.WriteLine("------------------------");
+                    }
+                }
+            }  
+        }
+    }
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
@@ -70,11 +122,17 @@ app.UseRouting();
 app.UseAuthentication();;
 
 app.UseAuthorization();
+Console.WriteLine("------------------------");
+Console.WriteLine("----------------uuuuuuuuuuu--------");
+Console.WriteLine("------------------------");
+Console.WriteLine("--------------uuuuuuuuuu----------");
+
+
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-    // pattern: "{controller=Home}/{action=Index}/{id?}").RequireAuthorization();
+    // pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}").RequireAuthorization();
 app.MapRazorPages();    
     
 // app.UsePathBase("/Identity/Account/Login");
