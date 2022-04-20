@@ -4,16 +4,8 @@ using MvcMovie.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity;
 using MvcMovie.Areas.Identity.Data;
-using MyApplication.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-var connectionString = builder.Configuration.GetConnectionString("ApplicationDbContextConnection");;
-
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));;
-
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();;
 // Replace with your connection string.
         // var connectionString = "server=localhost;user=root;password=1234;database=ef";
 
@@ -126,7 +118,6 @@ Console.WriteLine("------------------------");
 Console.WriteLine("----------------uuuuuuuuuuu--------");
 Console.WriteLine("------------------------");
 Console.WriteLine("--------------uuuuuuuuuu----------");
-
 
 
 app.MapControllerRoute(
