@@ -11,9 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 var serverVersion = new MySqlServerVersion(new Version(8, 0, 27));
 
-string connectionString = "server=localhost;database=rocket-elevators;user=martincote;password=dragonballz";
+// string connectionString = "server=localhost;database=rocket-elevators;user=martincote;password=dragonballz";
 
-// var connectionString = builder.Configuration.GetConnectionString("MvcMovieIdentityDbContextConnection");;
+var connectionString = builder.Configuration.GetConnectionString("MvcMovieIdentityDbContextConnection");;
 
 builder.Services.AddDbContext<MvcMovieIdentityDbContext>(options =>
     options.UseMySql(connectionString, serverVersion));;
@@ -21,7 +21,12 @@ builder.Services.AddDbContext<MvcMovieIdentityDbContext>(options =>
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<MvcMovieIdentityDbContext>();;
 
-
+builder.Services.AddDbContext<ElevatorsContext>(options =>
+    options.UseMySql(connectionString, serverVersion)
+        .LogTo(Console.WriteLine, LogLevel.Information)
+        .EnableSensitiveDataLogging()
+        .EnableDetailedErrors()
+);
 
 // if (builder.Environment.IsDevelopment())
 // {
