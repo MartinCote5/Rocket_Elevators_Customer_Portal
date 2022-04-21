@@ -72,13 +72,6 @@ if (!app.Environment.IsDevelopment())
                 // client.BaseAddress = new Uri("https://localhost:7276/api/Elevators/4");
                 client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/");
                 //HTTP GET
-                Console.WriteLine("---------tttt---------------");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("----------tttt--------------");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("------------------------");
-                Console.WriteLine("-----------ttttt-------------");
                 var responseTask = client.GetAsync("Leads/noncustomer");
                 responseTask.Wait();
 
@@ -114,11 +107,6 @@ app.UseRouting();
 app.UseAuthentication();;
 
 app.UseAuthorization();
-Console.WriteLine("------------------------");
-Console.WriteLine("----------------uuuuuuuuuuu--------");
-Console.WriteLine("------------------------");
-Console.WriteLine("--------------uuuuuuuuuu----------");
-
 
 app.MapControllerRoute(
     name: "default",
