@@ -22,12 +22,14 @@ public class ProductController : Controller
 
     public IActionResult Index()
     {
-    //var de mon cisti
+    
+        Customer customer = new Customer();
         Building[] buildings = new Building[]{};
         Battery[] batteries = new Battery[]{};
-        Customer customer = new Customer();
+        Column[] columns = new Column[]{};
+        Elevator[] elevators = new Elevator[]{};
         Product product = new Product();
-        // ViewBag.Elevators = elevators;
+        
         using (var client = new HttpClient())
             {   
                 
@@ -58,36 +60,29 @@ public class ProductController : Controller
 
                     customer = readTask.Result;
                     product.customer = customer;
-                    responseTask = client.GetAsync($"Buildings/portal/{customer.Id}");
+                    responseTask = client.GetAsync($"Customers/Products/{customer.Id}");
                     responseTask.Wait();
 
                     result = responseTask.Result;
 
                     if (result.IsSuccessStatusCode)
                     {
-                        var readTask2 = result.Content.ReadAsAsync<Building[]>();
+                        var readTask2 = result.Content.ReadAsAsync<Product>();
                         readTask2.Wait();
 
-                        buildings = readTask2.Result;
-                        product.buildings = buildings;
-                        responseTask = client.GetAsync($"Batteries/portal/4");
-                        responseTask.Wait();
 
-                        result = responseTask.Result;
-
-                        if (result.IsSuccessStatusCode)
-                        {   
-                            Console.WriteLine("-----------successbattery?------------");
-                            Console.WriteLine("-----------successbattery?------------");
-                            Console.WriteLine("-----------successbattery?------------");
-                            var readTask3 = result.Content.ReadAsAsync<Battery[]>();
-                            readTask3.Wait();
-
-                            batteries = readTask3.Result;
-                            Console.WriteLine(batteries);
-                            // Console.WriteLine(batteries.Id);
-                            product.batteries = batteries;
-                        }
+                        Product customerProducts = new Product{
+                            buildings = buildings,
+                            batteries = batteries,
+                            columns = columns,
+                            elevators = elevators
+                        };
+                        customerProducts = readTask2.Result;
+                        product = customerProducts;
+                        Console.WriteLine("-----------buildinginfor------------");
+                        Console.WriteLine(product);
+                        Console.WriteLine("-----------buildinginfor------------");
+                        
                     }
                        
 

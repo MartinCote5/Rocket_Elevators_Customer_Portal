@@ -14,13 +14,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.customer.Id)
+                @Html.DisplayNameFor(model => model.buildings[0].Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.customer.full_name_of_the_company_contact)
+                @Html.DisplayNameFor(model => model.buildings[0].full_name_of_the_building_administrator)
             </th>
             <th>
-                @User.Identity.Name
+                @Html.DisplayNameFor(model => model.buildings[0].email_of_the_administrator_of_the_building)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.buildings[0].phone_number_of_the_building_administrator)
             </th>
             <th></th>
         </tr>
@@ -34,9 +37,13 @@
             <td>
                 @Html.DisplayFor(modelItem => building.full_name_of_the_building_administrator)
             </td>
-             <td>
-                @* @Html.DisplayFor(modelItem => building.) *@
+            <td>
+                @Html.DisplayFor(modelItem => building.email_of_the_administrator_of_the_building)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => building.phone_number_of_the_building_administrator)
+            </td>
+            
             @* <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
@@ -44,5 +51,114 @@
             </td> *@
         </tr>
 }
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.batteries[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.batteries[0].battery_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.batteries[0].Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
+@foreach (var battery in Model.batteries) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => battery.Id)
+        </td>
+            <td>
+            @Html.DisplayFor(modelItem => battery.battery_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => battery.Status)
+        </td>
+        @* <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td> *@
+    </tr>
+}   
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.columns[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.columns[0].column_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.columns[0].Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
+@foreach (var column in Model.columns) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => column.Id)
+        </td>
+            <td>
+            @Html.DisplayFor(modelItem => column.column_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => column.Status)
+        </td>
+        @* <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td> *@
+    </tr>
+}
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.elevators[0].Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.elevators[0].elevator_type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.elevators[0].Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
+@foreach (var elevator in Model.elevators) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => elevator.Id)
+        </td>
+            <td>
+            @Html.DisplayFor(modelItem => elevator.elevator_type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => elevator.Status)
+        </td>
+        @* <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+        </td> *@
+    </tr>
+}    
+
     </tbody>
 </table>
