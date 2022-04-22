@@ -98,114 +98,66 @@ public class ProductController : Controller
         // Console.WriteLine(customers.Id);
         // Console.WriteLine("-----------customers-------------");
         return View(product);
-    
-        
-
-
-
-
-
-
-
-        // Elevator[] elevators = new Elevator[]{};
-        // ViewBag.Elevators = elevators;
-        // using (var client = new HttpClient())
-        //     {   
-        //         // client.BaseAddress = new Uri("https://localhost:7276/databaseName???/api/Elevators/4");
-        //         // client.BaseAddress = new Uri("https://localhost:7276/api/Elevators/4");
-        //         client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/");
-        //         //HTTP GET
-        //         Console.WriteLine("------------------------");
-        //         Console.WriteLine("------------------------");
-        //         Console.WriteLine("------------------------");
-        //         Console.WriteLine("------------------------");
-        //         Console.WriteLine("------------------------");
-        //         Console.WriteLine("------------------------");
-        //         Console.WriteLine("------------------------");
-        //         var responseTask = client.GetAsync("Elevators/inactive");
-        //         responseTask.Wait();
-
-        //         var result = responseTask.Result;
-                
-        //         if (result.IsSuccessStatusCode)
-        //         {
-
-        //             var readTask = result.Content.ReadAsAsync<Elevator[]>();
-        //             readTask.Wait();
-
-        //             elevators = readTask.Result;
-
-        //             foreach (var elevator in elevators)
-        //             {
-        //                 Console.WriteLine(elevator.Id);
-        //                 Console.WriteLine("------------------------");
-        //                 Console.WriteLine("------------------------");
-        //                 Console.WriteLine("------------------------");
-        //                 Console.WriteLine("------------------------");
-        //                 Console.WriteLine("------------------------");
-        //                 Console.WriteLine("------------------------");
-        //                 Console.WriteLine("------------------------");
-        //             }
-        //         }
-        //     }  
-        // return View(elevators);
     }
 
+
+
+
+    public IActionResult ElevatorEdit(long? id)
+        {
+            if (id == null) {
+                return NotFound();
+            }
+            Elevator elevator = new Elevator();
+            using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/");
+                    var responseTask = client.GetAsync($"Elevators/{id}");
+                        responseTask.Wait();
+
+                        var result = responseTask.Result;
+
+                        if (result.IsSuccessStatusCode)
+                        {
+                            var readTask2 = result.Content.ReadAsAsync<Elevator>();
+                            readTask2.Wait();
+
+                            elevator = readTask2.Result;
+                        }
+                }
+            return View(elevator);
+    }
+
+
+
+    public IActionResult BuildingEdit(long? id)
+        {
+            if (id == null) {
+                return NotFound();
+            }
+            Building building = new Building();
+            using (var client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/");
+                    var responseTask = client.GetAsync($"Buildings/{id}");
+                        responseTask.Wait();
+
+                        var result = responseTask.Result;
+
+                        if (result.IsSuccessStatusCode)
+                        {
+                            var readTask2 = result.Content.ReadAsAsync<Building>();
+                            readTask2.Wait();
+
+                            building = readTask2.Result;
+                        }
+                }
+            return View(building);
+        }
 
 }
 
 
 
 
-
-
-// namespace MvcMovie.Models
-// {   
     
-    
-//     class Program
-//     {
-//         static void Main(string[] args)
-//         {
-//             using (var client = new HttpClient())
-//             {   
-//                 // client.BaseAddress = new Uri("https://localhost:7276/databaseName???/api/Elevators/4");
-//                 // client.BaseAddress = new Uri("https://localhost:7276/api/Elevators/4");
-//                 client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/Elevators/4");
-//                 //HTTP GET
-//                 Console.WriteLine("------------------------");
-//                 Console.WriteLine("------------------------");
-//                 Console.WriteLine("------------------------");
-//                 Console.WriteLine("------------------------");
-//                 Console.WriteLine("------------------------");
-//                 Console.WriteLine("------------------------");
-//                 Console.WriteLine("------------------------");
-//                 var responseTask = client.GetAsync("elevators");
-//                 responseTask.Wait();
-
-//                 var result = responseTask.Result;
-//                 if (result.IsSuccessStatusCode)
-//                 {
-
-//                     var readTask = result.Content.ReadAsAsync<Elevator[]>();
-//                     readTask.Wait();
-
-//                     var elevators = readTask.Result;
-
-//                     foreach (var elevator in elevators)
-//                     {
-//                         Console.WriteLine(elevator.Id);
-//                         Console.WriteLine("------------------------");
-//                         Console.WriteLine("------------------------");
-//                         Console.WriteLine("------------------------");
-//                         Console.WriteLine("------------------------");
-//                         Console.WriteLine("------------------------");
-//                         Console.WriteLine("------------------------");
-//                         Console.WriteLine("------------------------");
-//                     }
-//                 }
-//             }
-//             Console.ReadLine();
-//         }        
-//     }
-// }
