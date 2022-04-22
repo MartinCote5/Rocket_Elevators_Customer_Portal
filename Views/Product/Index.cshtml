@@ -1,0 +1,48 @@
+
+@model MvcMovie.Models.Product
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.customer.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.customer.full_name_of_the_company_contact)
+            </th>
+            <th>
+                @User.Identity.Name
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var building in Model.buildings) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => building.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => building.full_name_of_the_building_administrator)
+            </td>
+             <td>
+                @* @Html.DisplayFor(modelItem => building.) *@
+            </td>
+            @* <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>

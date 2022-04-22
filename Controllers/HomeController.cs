@@ -16,6 +16,8 @@ public class HomeController : Controller
     public IActionResult Index()
     {
     //var de mon cisti
+        Building[] buildings = new Building[]{};
+        Battery[] batteries = new Battery[]{};
         Customer customer = new Customer();
         Product product = new Product();
         // ViewBag.Elevators = elevators;
@@ -36,7 +38,7 @@ public class HomeController : Controller
               
                 Console.WriteLine("-----------heroku-------------");
                 Console.WriteLine("------------------------");
-                var responseTask = client.GetAsync($"Customers/leigh.cummerata@greenholt.com");
+                var responseTask = client.GetAsync($"Customers/{user_email}");
                 responseTask.Wait();
 
                 var result = responseTask.Result;
@@ -59,10 +61,29 @@ public class HomeController : Controller
                         var readTask2 = result.Content.ReadAsAsync<Building[]>();
                         readTask2.Wait();
 
-                        Building[] buildings = readTask2.Result;
+                        buildings = readTask2.Result;
 
                         product.buildings = buildings;
+                        responseTask = client.GetAsync($"Batteries/portal/4");
+                        responseTask.Wait();
+
+                        result = responseTask.Result;
+
+                        if (result.IsSuccessStatusCode)
+                        {   
+                            Console.WriteLine("-----------successbattery?------------");
+                            Console.WriteLine("-----------successbattery?------------");
+                            Console.WriteLine("-----------successbattery?------------");
+                            var readTask3 = result.Content.ReadAsAsync<Battery[]>();
+                            readTask3.Wait();
+
+                            batteries = readTask3.Result;
+                            Console.WriteLine(batteries);
+                            // Console.WriteLine(batteries.Id);
+                            product.batteries = batteries;
+                        }
                     }
+                       
 
                     // foreach (var elevator in customers)
                     // {
