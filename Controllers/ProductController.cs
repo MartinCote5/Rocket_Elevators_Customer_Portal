@@ -154,8 +154,106 @@ public class ProductController : Controller
                 }
             return View(building);
         }
+   
 
-}
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> BuildingEdit(int id, [Bind("Id, customer_id, full_name_of_the_building_administrator,email_of_the_administrator_of_the_building,Genre,phone_number_of_the_building_administrator")] Building building)
+        {
+            if (id != building.Id)
+            {
+                return NotFound();
+            }
+
+            using (var client = new HttpClient())
+            {   
+                // var user_email = User.Identity.Name;
+                client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/");
+
+                var responseTask = client.PutAsJsonAsync<Building>($"Buildings/{id}", building);
+                responseTask.Wait();
+
+                var result = responseTask.Result;
+
+                    if (result.IsSuccessStatusCode)
+                    {
+
+                        Console.WriteLine("-----------put-------------");
+                        Console.WriteLine(id);
+                        Console.WriteLine("-----------put-------------");
+                        // var readTask2 = result.Content.ReadAsAsync<Building>();
+                        // readTask2.Wait();
+
+                        // building = readTask2.Result;
+                    }
+                }
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+
+
+        // static void Main(string[] args)
+        // {
+        //     using (var client = new HttpClient())
+        //     {
+        //         client.BaseAddress = new Uri("http://localhost:60464/api/");
+        //         //HTTP GET
+        //         var responseTask = client.GetAsync("student");
+        //         responseTask.Wait();
+
+        //         var result = responseTask.Result;
+        //         if (result.IsSuccessStatusCode)
+        //         {
+
+        //             var readTask = result.Content.ReadAsAsync<Student[]>();
+        //             readTask.Wait();
+
+        //             var students = readTask.Result;
+
+        //             foreach (var student in students)
+        //             {
+        //                 Console.WriteLine(student.Name);
+        //             }
+        //         }
+        //     }
+        //     Console.ReadLine();
+        // }        
+    }
+// }
+
+
+
+
+    
+//         static void Main(string[] args)
+//         {
+//             var student = new Student() { Name = "Steve" };
+
+//             var postTask = client.PostAsJsonAsync<Student>("student", student);
+//             postTask.Wait();
+
+//             var result = postTask.Result;
+//             if (result.IsSuccessStatusCode)
+//             {
+
+//                 var readTask = result.Content.ReadAsAsync<Student>();
+//                 readTask.Wait();
+
+//                 var insertedStudent = readTask.Result;
+
+//                 Console.WriteLine("Student {0} inserted with id: {1}", insertedStudent.Name, insertedStudent.Id);
+//             }
+//             else
+//             {
+//                 Console.WriteLine(result.StatusCode);
+//             }
+//         }
+//     }
+// }
+// }
 
 
 

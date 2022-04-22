@@ -10,12 +10,13 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="BuildingEdit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="customer_id"/>
             <div class="form-group">
                 <label asp-for="full_name_of_the_building_administrator" class="control-label"></label>
-                <input asp-for="full_name_of_the_building_administrator" class="form-control" />
+                <input asp-for="full_name_of_the_building_administrator" class="form-control"/>
                 <span asp-validation-for="full_name_of_the_building_administrator" class="text-danger"></span>
             </div>
             <div class="form-group">
