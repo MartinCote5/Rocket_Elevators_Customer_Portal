@@ -48,12 +48,6 @@
             <td>
             <a asp-action="BuildingEdit" asp-route-id="@building.Id">Edit</a> |  
             </td>
-            
-            @* <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td> *@
         </tr>
 }
 
@@ -84,11 +78,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => battery.Status)
-        </td>
-        <td>
-            @* <a asp-action="Edit" asp-route-id="@battery.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@battery.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@battery.Id">Delete</a> *@
         </td>
     </tr>
 }   
@@ -121,9 +110,6 @@
         <td>
             @Html.DisplayFor(modelItem => column.Status)
         </td>
-        <td>
-            @* <a href="/Movies/Edit/@column.Id">Intervention form</a> | *@
-        </td>
     </tr>
 }
 
@@ -140,7 +126,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.elevators[0].Status)
             </th>
-            <th></th>
         </tr>
     </thead>
 <tbody>
@@ -154,9 +139,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => elevator.Status)
-        </td>
-        <td>
-            <a asp-action="ElevatorEdit" asp-route-id="@elevator.Id">Edit</a> |  
         </td>
     </tr>
 }    

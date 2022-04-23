@@ -1,8 +1,7 @@
 namespace MvcMovie.Models
 {
     public class Intervention
-    {
-        
+    { 
         public long Id { get; set; }
         public long customer_id { get; set; }
         public long building_id { get; set; }
