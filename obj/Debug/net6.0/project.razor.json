@@ -16368,6 +16368,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/martincote/ASPNET template/MvcMovie/Views/Intervention/index.cshtml",
+      "TargetPath": "Views\\Intervention\\index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/martincote/ASPNET template/MvcMovie/Views/HelloWorld/Welcome.cshtml",
       "TargetPath": "Views\\HelloWorld\\Welcome.cshtml",
       "FileKind": "mvc"
@@ -16415,11 +16420,6 @@
     {
       "FilePath": "/home/martincote/ASPNET template/MvcMovie/Views/Movies/Edit.cshtml",
       "TargetPath": "Views\\Movies\\Edit.cshtml",
-      "FileKind": "mvc"
-    },
-    {
-      "FilePath": "/home/martincote/ASPNET template/MvcMovie/Views/Home/Intervention.cshtml",
-      "TargetPath": "Views\\Home\\Intervention.cshtml",
       "FileKind": "mvc"
     }
   ],
