@@ -1,0 +1,196 @@
+@model MvcMovie.Models.Intervention
+
+@{
+    <title>@ViewData["Title"] - Movie App</title>
+}
+
+<h1>Create New</h1>
+
+<h4>Intervention</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="BuildingEdit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="form-group">
+                <label asp-for="customer_id" class="control-label"></label>
+                <input asp-for="customer_id" class="form-control"/>
+                <span asp-validation-for="customer_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="building_id" class="control-label"></label>
+                <input asp-for="building_id" class="form-control" />
+                <span asp-validation-for="building_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="battery_id" class="control-label"></label>
+                <input asp-for="battery_id" class="form-control" />
+                <span asp-validation-for="battery_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="column_id" class="control-label"></label>
+                <input asp-for="column_id" class="form-control"/>
+                <span asp-validation-for="column_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="elevator_id" class="control-label"></label>
+                <input asp-for="elevator_id" class="form-control" />
+                <span asp-validation-for="elevator_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="employee_id" class="control-label"></label>
+                <input asp-for="employee_id" class="form-control" />
+                <span asp-validation-for="employee_id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="report" class="control-label"></label>
+                <input asp-for="report" class="form-control" />
+                <span asp-validation-for="report" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @* <a asp-action="ElevatorEdit" asp-route-id="@elevator.Id">Edit</a> *@
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+ 
+  @* <script>
+  $('#customers_select').change(function() {
+    $.ajax({
+      
+      url: 'interventions/update_buildings',
+      type: 'GET',
+      data: {
+        customer_id: $("#customers_select option:selected").val()
+      },
+      success: function(buildings) {
+        // Clear all options from course select
+        $("select#buildings_select option").remove();
+        $("select#batteries_select option").remove();
+        $("select#columns_select option").remove();
+        $("select#elevators_select option").remove();
+        //put in a empty default line
+        var row = "<option value=\"" + "" + "\" disabled selected hidden>" + "--select your building--" + "</option>";
+        var unusableRow = ("<option value=\"" + "" + "\">" + "--fill other fields first--" + "</option>");
+        $(row).appendTo("select#buildings_select");
+        $(unusableRow).appendTo("select#batteries_select");
+        $(unusableRow).appendTo("select#columns_select");
+        $(unusableRow).appendTo("select#elevators_select");
+
+        $('#batteries_select').prop('disabled',true);
+        $('#columns_select').prop('disabled',true);
+        $('#elevators_select').prop('disabled',true);
+        
+        // Fill course select
+        $.each(buildings, function(i, building) {
+            console.log(building)
+            row = "<option value=\"" + building.id + "\">" + building.id + "</option>";
+            $(row).appendTo("select#buildings_select");
+        });
+      $('#buildings_select').prop('disabled',false);
+      }
+    })
+  })
+
+  $('#buildings_select').change(function() {
+    $.ajax({
+      url: 'interventions/update_batteries',
+      type: 'GET',
+      data: {
+        building_id: $("#buildings_select option:selected").val()
+      },
+      success: function(batteries) {
+        console.log(batteries)
+        // Clear all options from course select
+        $("select#batteries_select option").remove();
+        $("select#columns_select option").remove();
+        $("select#elevators_select option").remove();
+        //put in a empty default line
+        var row = "<option value=\"" + "" + "\" disabled selected hidden>" + "--select your battery--" + "</option>";
+        var unusableRow = ("<option value=\"" + "" + "\">" + "--fill other fields first--" + "</option>");
+        $(row).appendTo("select#batteries_select");
+        $(unusableRow).appendTo("select#columns_select");
+        $(unusableRow).appendTo("select#elevators_select");
+        
+        $('#columns_select').prop('disabled',true);
+        $('#elevators_select').prop('disabled',true);
+
+        // Fill course select
+        $.each(batteries, function(i, battery) {
+            row = "<option value=\"" + battery.id + "\">" + battery.id + "</option>";
+            $(row).appendTo("select#batteries_select");
+        });
+      $('#batteries_select').prop('disabled',false);  
+      }
+    })
+  })
+
+   $('#batteries_select').change(function() {
+    $.ajax({
+      url: 'interventions/update_columns',
+      type: 'GET',
+      data: {
+        battery_id: $("#batteries_select option:selected").val()
+      },
+      success: function(columns) {
+        // Clear all options from course select
+        $("select#columns_select option").remove();
+        $("select#elevators_select option").remove();
+        //put in a empty default line
+        var row = "<option value=\"" + "" + "\" disabled selected hidden>" + "--select your column--" + "</option>";
+        var unusableRow = "<option value=\"" + "" + "\">" + "--fill other fields first--" + "</option>";
+        
+        $(row).appendTo("select#columns_select").disabled = true;
+        $(unusableRow).appendTo("select#elevators_select");
+
+        $('#elevators_select').prop('disabled',true);
+      
+        // Fill course select
+        $.each(columns, function(i, column) {
+            row = "<option value=\"" + column.id + "\">" + column.id + "</option>";
+            $(row).appendTo("select#columns_select");
+        });
+      $('#columns_select').prop('disabled',false);  
+      }
+    })
+  })
+
+   $('#columns_select').change(function() {
+    $.ajax({
+      url: 'interventions/update_elevators',
+      type: 'GET',
+      data: {
+        column_id: $("#columns_select option:selected").val()
+      },
+      success: function(elevators) {
+        // Clear all options from course select
+        $("select#elevators_select option").remove();
+        //put in a empty default line
+        var row = "<option value=\"" + "" + "\" disabled selected hidden>" + "--select your elevator--" + "</option>";
+        $(row).appendTo("select#elevators_select");
+
+        // Fill course select
+        $.each(elevators, function(i, elevator) {
+            row = "<option value=\"" + elevator.id + "\">" + elevator.id + "</option>";
+            $(row).appendTo("select#elevators_select");
+        });
+      $('#elevators_select').prop('disabled',false);  
+      }
+    })
+  })
+  
+  </script>   *@

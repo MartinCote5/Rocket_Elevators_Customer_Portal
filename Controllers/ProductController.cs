@@ -32,21 +32,8 @@ public class ProductController : Controller
         
         using (var client = new HttpClient())
             {   
-                
-                // GET: api/Customers/{email}
-                // GET: api/Customers/{email}
-
-                // var x = .UserName;
-
-                Console.WriteLine("----------identityname--------------");
                 var user_email = User.Identity.Name;
-                Console.WriteLine(user_email);
-                Console.WriteLine("------------identityname------------");
                 client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/");
-                //HTTP GET
-              
-                Console.WriteLine("-----------heroku-------------");
-                Console.WriteLine("------------------------");
                 var responseTask = client.GetAsync($"Customers/{user_email}");
                 responseTask.Wait();
 
@@ -54,7 +41,6 @@ public class ProductController : Controller
                 
                 if (result.IsSuccessStatusCode)
                 {
-                    Console.WriteLine("-----------success?------------");
                     var readTask = result.Content.ReadAsAsync<Customer>();
                     readTask.Wait();
 
@@ -78,25 +64,11 @@ public class ProductController : Controller
                             elevators = elevators
                         };
                         customerProducts = readTask2.Result;
-                        product = customerProducts;
-                        Console.WriteLine("-----------buildinginfor------------");
-                        Console.WriteLine(product);
-                        Console.WriteLine("-----------buildinginfor------------");
-                        
+                        product = customerProducts;                    
                     }
-                       
-
-                    // foreach (var elevator in customers)
-                    // {
-                    //     Console.WriteLine(customer.Id);
-                        
-                    // }
                 }
             }  
 
-        // Console.WriteLine("-----------customers-------------");
-        // Console.WriteLine(customers.Id);
-        // Console.WriteLine("-----------customers-------------");
         return View(product);
     }
 
@@ -167,7 +139,6 @@ public class ProductController : Controller
 
             using (var client = new HttpClient())
             {   
-                // var user_email = User.Identity.Name;
                 client.BaseAddress = new Uri("https://heroku-rocketelevators-martinc.herokuapp.com/api/");
 
                 var responseTask = client.PutAsJsonAsync<Building>($"Buildings/{id}", building);
@@ -191,71 +162,7 @@ public class ProductController : Controller
             return RedirectToAction(nameof(Index));
         }
 
+}
 
 
-
-
-        // static void Main(string[] args)
-        // {
-        //     using (var client = new HttpClient())
-        //     {
-        //         client.BaseAddress = new Uri("http://localhost:60464/api/");
-        //         //HTTP GET
-        //         var responseTask = client.GetAsync("student");
-        //         responseTask.Wait();
-
-        //         var result = responseTask.Result;
-        //         if (result.IsSuccessStatusCode)
-        //         {
-
-        //             var readTask = result.Content.ReadAsAsync<Student[]>();
-        //             readTask.Wait();
-
-        //             var students = readTask.Result;
-
-        //             foreach (var student in students)
-        //             {
-        //                 Console.WriteLine(student.Name);
-        //             }
-        //         }
-        //     }
-        //     Console.ReadLine();
-        // }        
-    }
-// }
-
-
-
-
-    
-//         static void Main(string[] args)
-//         {
-//             var student = new Student() { Name = "Steve" };
-
-//             var postTask = client.PostAsJsonAsync<Student>("student", student);
-//             postTask.Wait();
-
-//             var result = postTask.Result;
-//             if (result.IsSuccessStatusCode)
-//             {
-
-//                 var readTask = result.Content.ReadAsAsync<Student>();
-//                 readTask.Wait();
-
-//                 var insertedStudent = readTask.Result;
-
-//                 Console.WriteLine("Student {0} inserted with id: {1}", insertedStudent.Name, insertedStudent.Id);
-//             }
-//             else
-//             {
-//                 Console.WriteLine(result.StatusCode);
-//             }
-//         }
-//     }
-// }
-// }
-
-
-
-
-    
+        
